@@ -8,11 +8,15 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
     return (
         <header className="flex items-center justify-between p-6 ">
-            <div className="font-bold text-[20px]"> K H A Y</div>
+            <div className="font-bold text-[20px]">
+                <Link href="/"> K H A Y </Link>
+            </div>
             <div>
                 {currentPage === "/" && (
                     <Link href="/login">
-                        <Button variant="primary" size="sm" >Login </Button>{" "}
+                        <Button variant="primary" size="sm">
+                            Login{" "}
+                        </Button>{" "}
                     </Link>
                 )}
                 {currentPage === "login" && <div />}
