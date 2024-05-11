@@ -69,7 +69,7 @@ const Login = () => {
                             handleChange(e);
                             setNameError(false);
                         }}
-                        className="p-2 border rounded mb-2"
+                        className="p-2  mb-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground"
                         required
                     />
                     {nameerror && (
@@ -93,7 +93,7 @@ const Login = () => {
                             handleChange(e);
                             setPassError(false);
                         }}
-                        className="p-2 border rounded mb-2"
+                        className="p-2  mb-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground"
                         required
                     />
                     {passerror && (
