@@ -4,8 +4,7 @@ import { Button } from "./Button";
 interface HeaderProps {
     currentPage: string;
 }
-
-export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
+export function Header({ currentPage }: HeaderProps): JSX.Element {
     return (
         <header className="flex items-center justify-between p-[30px] ">
             <div className="font-bold text-[20px]">
@@ -20,8 +19,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
                     </Link>
                 )}
                 {currentPage === "login" && <div />}
-                {currentPage === "dashboard" && <div>Welcome Back Daniel</div>}
+                {currentPage === "dashboard" && (
+                    <div className=" text-xl font-bold text-[#a39b9b] ">
+                        Welcome Back, <span className="text-[#000]">Daniel</span>
+                    </div>
+                )}
             </div>
         </header>
     );
-};
+}
+
