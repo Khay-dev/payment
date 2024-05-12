@@ -1,5 +1,7 @@
 const buttonVariants = {
     normal: "text-white bg-black border-none hover:bg-white hover:text-black transition ",
+    outline:
+        "text-black bg-white border hover:bg-button-blue-100 hover:text-white transition ",
     secondary:
         "bg-button-blue-100 disabled:bg-[#E2DDDB] hover:bg-button-blue-200 focus:bg-button-blue-200 active:bg-button-blue-200  visited:bg-button-blue-200  cursor-pointer text-white",
     primary:
@@ -7,7 +9,7 @@ const buttonVariants = {
 };
 
 const buttonSizes = {
-    lg: "py-4 px-8 text-xl",
+    lg: "py-7 px-7 text-md md:py-8 md:px-8 md:text-lg",
     md: "py-3 px-6 text-base",
     sm: "py-3 px-6 text-sm",
     xs: "py-2 px-6 text-sm",

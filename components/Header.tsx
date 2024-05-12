@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 export function Header({ currentPage }: HeaderProps): JSX.Element {
     return (
-        <header className="flex items-center justify-between p-[30px] ">
+        <header className="flex items-center justify-between p-[30px] md:p-[35px] ">
             <div className="font-bold text-[20px]">
                 <Link href="/"> K H A Y </Link>
             </div>
@@ -20,12 +20,11 @@ export function Header({ currentPage }: HeaderProps): JSX.Element {
                 )}
                 {currentPage === "login" && <div />}
                 {currentPage === "dashboard" && (
-                    <div className=" text-xl font-bold text-[#a39b9b] ">
-                        Welcome Back, <span className="text-[#000]">Daniel</span>
-                    </div>
+                    <Button size="sm" variant="secondary">
+                        Logout
+                    </Button>
                 )}
             </div>
         </header>
     );
 }
-
