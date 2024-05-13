@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import Link from "next/link";
 export default function Home() {
     return (
-        <div className="h-screen bg-center bg-cover md:bg-bg-hero bg-no-repeat ">
+        <div className="h-screen bg-center bg-cover md:bg-bg-hero bg-no-repeat w-full">
             <Header currentPage={"/"} />
             <main className="flex text-center flex-col items-center  px-[30px] pt-20 md:px-20  relative">
                 <h1 className="font-bold text-3xl w-[100%] leading-[1.15] mb-4  md:text-5xl md:w-[60%]">

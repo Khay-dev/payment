@@ -9,9 +9,9 @@ const buttonVariants = {
 };
 
 const buttonSizes = {
-    lg: "py-7 px-7 text-md md:py-8 md:px-8 md:text-lg",
+    lg: "py-7 px-7 text-sm md:py-8 md:px-8",
     md: "py-3 px-6 text-base",
-    sm: "py-3 px-6 text-sm",
+    sm: "py-2 px-6 text-sm",
     xs: "py-2 px-6 text-sm",
 };
 

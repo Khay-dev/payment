@@ -1,9 +1,16 @@
+"use client";
 import { Button } from "@/components/Button";
+import { Fund } from "@/components/Funds";
 import { Header } from "@/components/Header";
+import { Modal } from "@/components/Modal";
+import { Send } from "@/components/Send";
 import { Transactions } from "@/components/Transactions";
+import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
 const Dashboard = () => {
+    const [isModalfundOpen, setIsModalfundOpen] = useState<boolean>(false);
+    const [isModalsendOpen, setIsModalsendOpen] = useState<boolean>(false);
     return (
         <>
             <Header currentPage="dashboard" />
@@ -16,7 +23,7 @@ const Dashboard = () => {
                         <span className="text-sm font-light text-[#70707B] ">
                             Current Balance (NGN)
                         </span>
-                        <span className="text-[32px] font-semibold text-[#18181B]">
+                        <span className="text-[25px] font-semibold text-[#18181B]">
                             ₦4,000,000.00
                         </span>
                     </div>
@@ -26,23 +33,37 @@ const Dashboard = () => {
                     <Button
                         variant="outline"
                         size="lg"
-                        className="text-sm font-bold  text-[#18181B] "
+                        className="text-sm font-bold  text-[#18181B]"
+                        onClick={() => setIsModalfundOpen(true)}
                     >
                         Fund
                     </Button>
+                    <Modal
+                        isOpen={isModalfundOpen}
+                        onClose={() => setIsModalfundOpen(false)}
+                    >
+                        <Fund />
+                    </Modal>
                     <Button
                         variant="outline"
                         size="lg"
                         className=" text-sm font-bold  text-[#18181B] "
+                        onClick={() => setIsModalsendOpen(true)}
                     >
                         Send
                     </Button>
+                    <Modal
+                        isOpen={isModalsendOpen}
+                        onClose={() => setIsModalsendOpen(false)}
+                    >
+                        <Send />
+                    </Modal>
                     <Button
                         variant="outline"
                         size="lg"
-                        className="text-lg font-bold text-[#18181B] "
+                        className="text-sm font-bold text-[#18181B] "
                     >
-                        <FaPlus /> 
+                        <FaPlus />
                     </Button>
                 </div>
 
@@ -56,7 +77,7 @@ const Dashboard = () => {
                                 <p className="text-sm font-semibold md:text-md">
                                     Ecobank
                                 </p>
-                                <p className=" text-xs font-extralight md:text-sm">
+                                <p className=" font-extralight text-xs">
                                     ******2353
                                 </p>
                             </div>
@@ -64,7 +85,7 @@ const Dashboard = () => {
                                 <p className="text-sm font-semibold md:text-md">
                                     UBA
                                 </p>
-                                <p className="text-xs font-extralight md:text-sm">
+                                <p className="text-xs font-extralight ">
                                     ******1234
                                 </p>
                             </div>
@@ -72,7 +93,7 @@ const Dashboard = () => {
                                 <p className="text-sm font-semibold md:text-md">
                                     FCMB
                                 </p>
-                                <p className="text-xs font-extralight md:text-sm">
+                                <p className="text-xs font-extralight">
                                     ******4534
                                 </p>
                             </div>
