@@ -2,6 +2,7 @@
 import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface FormData {
     username: string;
@@ -13,9 +14,12 @@ const Login = () => {
         username: "",
         password: "",
     });
+
     const [nameerror, setNameError] = useState<boolean>(false);
     const [passerror, setPassError] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -33,6 +37,7 @@ const Login = () => {
             setIsLoading(true);
             setTimeout(() => {
                 setIsLoading(false);
+                router.push("/dashboard");
                 console.log(formData);
             }, 2000);
         }
