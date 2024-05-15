@@ -1,23 +1,17 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import userSliceReducer from "./user/user";
 
-const userSlice = createSlice({
-	name: "user",
-	initialState: {username: "" },
-	reducers: {
-		setName: (state, action) => {
-			state.username = action.payload;
-		},
-	},
-});
 export const store = configureStore({
-	reducer: userSlice.reducer,
+	reducer: {
+		username: userSliceReducer
+	}
 });
 
 
 export type RootState=ReturnType<typeof store.getState>
 
 
-export const { setName} = userSlice.actions;
+
 
 
 

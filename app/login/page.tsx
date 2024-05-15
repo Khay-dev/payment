@@ -1,10 +1,10 @@
 "use client";
 import { Button } from "@/components/Button";
 import { Header } from "@/components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setName } from "@/lib/store";
+import { setName } from "@/lib/user/user";
 
 interface FormData {
     username: string;
@@ -55,6 +55,11 @@ const Login = () => {
             [e.target.name]: e.target.value,
         });
     };
+
+
+     useEffect(() => {
+         localStorage.setItem("username", JSON.stringify(formData.username));
+     }, [formData.username]);
 
     return (
         <>
