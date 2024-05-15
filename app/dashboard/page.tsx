@@ -19,7 +19,7 @@ console.log(name)
         <>
             <Header currentPage="dashboard" />
             <div className=" text-2xl font-bold text-[#a39b9b] px-[35px] ">
-                Welcome Back, <span className="text-[#4fa5cb]">{name}</span>
+                Welcome Back, <span className="text-[#4fa5cb]">{name.toUpperCase()}</span>
             </div>
             <section className=" justify-between flex flex-col gap-8 px-7 py-8 md:flex-row">
                 <div className="rounded-lg border bg-card text-card-foreground shadow-sm flex basis-3/12 flex-col border-[#E4E4E7] p-5">

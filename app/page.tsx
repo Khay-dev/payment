@@ -3,9 +3,9 @@ import { Header } from "@/components/Header";
 import Link from "next/link";
 export default function Home() {
     return (
-        <div className="h-screen bg-center bg-cover md:bg-bg-hero bg-no-repeat w-full">
+        <div className="h-screen bg-top bg-cover bg-bg-hero bg-no-repeat w-full md:bg-center">
             <Header currentPage={"/"} />
-            <main className="flex text-center flex-col items-center  px-[30px] pt-20 md:px-20  relative">
+            <main className="flex text-center flex-col items-center absolute left-[2%] top-[35%]  transform[-50%,-50%] z-50 md:top-[30%]">
                 <h1 className="font-bold text-3xl w-[100%] leading-[1.15] mb-4  md:text-5xl md:w-[60%]">
                     Pay or Receive Money Anywhere, Anytime
                 </h1>
