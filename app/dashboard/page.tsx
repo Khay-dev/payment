@@ -14,6 +14,7 @@ const Dashboard = () => {
     const [isModalfundOpen, setIsModalfundOpen] = useState<boolean>(false);
     const [isModalsendOpen, setIsModalsendOpen] = useState<boolean>(false);
     const name = useSelector((state: RootState) => state.username.username);
+    const funds = useSelector((state: RootState) => state.amount.amount);
     const userName = name.charAt(0).toUpperCase() + name.slice(1);
 
 console.log(name)
@@ -30,7 +31,7 @@ console.log(name)
                             Current Balance (NGN)
                         </span>
                         <span className="text-[25px] font-semibold text-[#18181B]">
-                            ₦4,000,000.00
+                            ₦{funds.toLocaleString()}
                         </span>
                     </div>
                 </div>
