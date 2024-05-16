@@ -15,7 +15,7 @@ const initialState: fundState = {
   amount: initialValue,
 };
 
-export const fundSlice = createSlice({
+export const balanceSlice = createSlice({
   name: 'funds',
   initialState,
   reducers: {
@@ -41,5 +41,5 @@ export const fundSlice = createSlice({
   },
 });
 
-export const { updateFunds, decreaseFunds, resetAmount } = fundSlice.actions
-export default fundSlice.reducer;
+export const { updateFunds, decreaseFunds, resetAmount } = balanceSlice.actions
+export default balanceSlice.reducer;

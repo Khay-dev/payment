@@ -1,22 +1,31 @@
+export interface Transaction {
+    date: string;
+    transactionType: string;
+    transactionAmount: string;
+    transactionStatus: "Successful" | "Failed" | "Pending";
+}
+
 export const Transactions = () => {
-    const transactions = [
+
+    const currentDate = new Date();
+    const transactions: Transaction[] = [
         {
-            type: "Funding",
-            amount: "₦214,000.00",
-            date: "May 11, 2023",
-            status: "Paid",
+            transactionType: "Funding",
+            transactionAmount: "₦214,000.00",
+            date: currentDate.toLocaleDateString(),
+            transactionStatus: "Successful",
         },
         {
-            type: "Funding",
-            amount: "₦20,000.00",
-            date: "May 11, 2023",
-            status: "Pending",
+            transactionType: "Funding",
+            transactionAmount: "₦20,000.00",
+            date: currentDate.toLocaleDateString(),
+            transactionStatus: "Pending",
         },
         {
-            type: "Transfer",
-            amount: "₦12,000.00",
-            date: "May 11, 2023",
-            status: "Overdue",
+            transactionType: "Transfer",
+            transactionAmount: "₦12,000.00",
+            date: currentDate.toLocaleDateString(),
+            transactionStatus: "Failed",
         },
     ];
 
@@ -49,16 +58,15 @@ export const Transactions = () => {
                             </thead>
                             <tbody>
                                 {transactions.map((transaction, index) => (
-                                    // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                                     <tr key={index}>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
                                             <p className="text-gray-900 whitespace-nowrap">
-                                                {transaction.type}
+                                                {transaction.transactionType}
                                             </p>
                                         </td>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm  w-1/5">
                                             <p className="text-gray-900 whitespace-nowrap">
-                                                {transaction.amount}
+                                                {transaction.transactionAmount}
                                             </p>
                                         </td>
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 ">
@@ -69,10 +77,10 @@ export const Transactions = () => {
                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm  w-1/5 ">
                                             <span
                                                 className={`relative inline-block px-3 py-1 font-semibold leading-tight ${
-                                                    transaction.status ===
-                                                    "Paid"
+                                                    transaction.transactionStatus ===
+                                                    "Successful"
                                                         ? "text-green-900"
-                                                        : transaction.status ===
+                                                        : transaction.transactionStatus ===
                                                           "Pending"
                                                         ? "text-orange-900"
                                                         : "text-red-900"
@@ -81,17 +89,19 @@ export const Transactions = () => {
                                                 <span
                                                     aria-hidden
                                                     className={`absolute inset-0 ${
-                                                        transaction.status ===
-                                                        "Paid"
+                                                        transaction.transactionStatus ===
+                                                        "Successful"
                                                             ? "bg-green-200"
-                                                            : transaction.status ===
+                                                            : transaction.transactionStatus ===
                                                               "Pending"
                                                             ? "bg-orange-200"
                                                             : "bg-red-200"
                                                     } opacity-50 rounded-full`}
                                                 />
                                                 <span className="relative">
-                                                    {transaction.status}
+                                                    {
+                                                        transaction.transactionStatus
+                                                    }
                                                 </span>
                                             </span>
                                         </td>
