@@ -15,13 +15,18 @@ const initialState: fundState = {
   amount: initialValue,
 };
 
-
-const fundSlice = createSlice({
+export const fundSlice = createSlice({
   name: 'funds',
   initialState,
   reducers: {
     updateFunds: (state, action: PayloadAction<number>) => {
       state.amount += action.payload;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("amount", state.amount.toString());
+      }
+    },
+    decreaseFunds: (state, action: PayloadAction<number>) => {
+      state.amount -= action.payload;
       if (typeof window !== "undefined") {
         localStorage.setItem("amount", state.amount.toString());
       }
@@ -36,5 +41,5 @@ const fundSlice = createSlice({
   },
 });
 
-export const { updateFunds, resetAmount } = fundSlice.actions
+export const { updateFunds, decreaseFunds, resetAmount } = fundSlice.actions
 export default fundSlice.reducer;

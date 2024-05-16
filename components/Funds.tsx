@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { useDispatch } from "react-redux";
-import { updateFunds } from "@/lib/fund/balanceSlice";
+import { updateFunds } from "@/lib/Balance/balanceSlice";
 
 interface FormData {
     amount: string;
@@ -81,7 +81,7 @@ export const Fund = () => {
                                     className="text-gray-900"
                                 />
                             </svg>
-                            <span>Logging in</span>
+                            <span>Loading...</span>
                         </>
                     ) : (
                         "Fund"
