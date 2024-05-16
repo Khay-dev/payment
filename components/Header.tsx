@@ -13,8 +13,10 @@ export function Header({ currentPage }: HeaderProps): JSX.Element {
     const router = useRouter();
     const dispatch = useDispatch();
     const handleLogout = () => {
-        router.push("/login");
-        dispatch(resetAmount());
+        setTimeout(() => {
+            dispatch(resetAmount());
+            router.push("/login");
+        }, 1000);
     };
 
     const handleLogin = () => {
