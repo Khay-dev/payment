@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
-import { resetAmount } from "@/lib/fund/fund";
+import { resetAmount } from "@/lib/fund/balanceSlice";
 import { UseDispatch, useDispatch } from "react-redux";
 interface HeaderProps {
     currentPage: string;

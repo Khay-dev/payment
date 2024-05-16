@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { useDispatch } from "react-redux";
-import { updateFunds, } from "@/lib/fund/fund";
+import { updateFunds } from "@/lib/fund/balanceSlice";
 
 interface FormData {
     amount: string;
@@ -29,7 +29,7 @@ export const Fund = () => {
         setTimeout(() => {
             setIsLoading(false);
             console.log(formData.amount);
-            dispatch(updateFunds(Number(formData.amount))); 
+            dispatch(updateFunds(Number(formData.amount)));
         }, 2000);
     };
     return (

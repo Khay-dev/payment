@@ -31,7 +31,7 @@ export function Button(
 
     return (
         <button
-            type="button"
+            type="submit"
             {...rest}
             className={`${buttonSizes[size]} ${buttonVariants[variant]} ${className}`}
         >

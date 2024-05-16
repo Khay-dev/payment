@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setName } from "@/lib/user/user";
+import { setName } from "@/lib/user/userSlice";
 
 interface FormData {
     username: string;
@@ -16,7 +16,6 @@ const Login = () => {
         username: "",
         password: "",
     });
-
 
     const dispatch = useDispatch();
 
