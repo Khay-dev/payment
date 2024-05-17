@@ -8,7 +8,7 @@ import { Transactions } from "@/components/Transactions";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import  { RootState } from "@/lib/store";
+import { RootState } from "@/lib/store";
 
 const Dashboard = () => {
     const [isModalfundOpen, setIsModalfundOpen] = useState<boolean>(false);
@@ -17,23 +17,23 @@ const Dashboard = () => {
     const funds = useSelector((state: RootState) => state.amount.amount);
     const userName = name.charAt(0).toUpperCase() + name.slice(1);
 
-    console.log(name)
-     const date = new Date();
-     const currentHour = date.getHours();
-     let greeting;
+    console.log(name);
+    const date = new Date();
+    const currentHour = date.getHours();
+    let greeting;
 
-     if (currentHour < 12) {
-         greeting = "Good Morning";
-     } else if (currentHour < 18) {
-         greeting = "Good Afternoon";
-     } else {
-         greeting = "Good Evening";
-     }
+    if (currentHour < 12) {
+        greeting = "Good Morning";
+    } else if (currentHour < 18) {
+        greeting = "Good Afternoon";
+    } else {
+        greeting = "Good Evening";
+    }
     return (
         <>
             <Header currentPage="dashboard" />
             <div className=" text-2xl font-bold text-[#a39b9b] px-[35px] ">
-                { greeting} <span className="text-[#4fa5cb]">{userName}</span>
+                {greeting} <span className="text-[#4fa5cb]">{userName}</span>
             </div>
             <section className=" justify-between flex flex-col gap-8 px-7 py-8 md:flex-row">
                 <div className="rounded-lg border bg-card text-card-foreground shadow-sm flex basis-3/12 flex-col border-[#E4E4E7] p-5">
