@@ -1,17 +1,14 @@
 "use client";
-
 import Link from "next/link";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
+
 interface HeaderProps {
     currentPage: string;
 }
 
 export function Header({ currentPage }: HeaderProps): JSX.Element {
     const router = useRouter();
-
-    const dispatch = useDispatch();
 
     const handleLogout = () => {
         setTimeout(() => {
@@ -38,7 +35,6 @@ export function Header({ currentPage }: HeaderProps): JSX.Element {
                 )}
                 {currentPage === "login" && (
                     <div>
-                        {/* Add your login form here */}
                         <Button
                             size="sm"
                             variant="secondary"

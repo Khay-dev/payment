@@ -14,7 +14,6 @@ export const Fund = () => {
         amount: "",
     });
     const [error, setError] = useState<boolean>(false);
-    const [balanceError, setBalanceError] = useState<boolean>(false);
 
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
@@ -41,7 +40,6 @@ export const Fund = () => {
             setIsLoading(true);
             setTimeout(() => {
                 setIsLoading(false);
-                console.log(formData.amount);
                 setIsSubmitted(true);
                 dispatch(updateFunds(Number(formData.amount)));
             }, 2000);
@@ -64,7 +62,6 @@ export const Fund = () => {
                         onChange={(e) => {
                             handleInputChange(e);
                             setError(false);
-                            setBalanceError(false);
                         }}
                         placeholder="Enter amount (NGN)"
                         className="p-2 flex h-10 w-[250px] rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground"

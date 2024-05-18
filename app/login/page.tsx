@@ -5,11 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setName } from "@/lib/Users/userSlice";
+import { FormData } from "./type";
 
-interface FormData {
-    username: string;
-    password: string;
-}
 
 const Login = () => {
     const [formData, setFormData] = useState<FormData>({
@@ -41,7 +38,6 @@ const Login = () => {
             setIsLoading(true);
             setTimeout(() => {
                 setIsLoading(false);
-                console.log(formData);
                 dispatch(setName(formData.username));
                 router.push("/dashboard");
             }, 2000);
@@ -57,11 +53,11 @@ const Login = () => {
     return (
         <>
             <Header currentPage="/login" />
-            <main className="flex text-center flex-col gap-y-5 items-center px-[30px] pt-20 md:px-20 relative ">
+            <main className="flex text-center flex-col gap-y-5 items-center px-[30px] pt-20 md:px-20 relative h-full">
                 <h1 className="font-bold  pl-3 text-left text-3xl w-[100%] leading-[1.15] mb-5 md:text-4xl md:w-[60%] md:text-center ">
                     Login
                 </h1>
-                <form className="w-[90%] flex flex-col md:w-[40%] border-y-2 py-5 md:border-none md:py-0">
+                <form className="w-[90%] flex flex-col  border-y-2 py-5 md:border-none md:py-0 md:w-3/4 lg:w-1/3">
                     <label
                         htmlFor="username"
                         className="mb-1 font-bold text-left"

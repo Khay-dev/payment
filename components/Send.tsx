@@ -44,7 +44,6 @@ export const Send = () => {
 
             setTimeout(() => {
                 setIsLoading(false);
-                console.log(formData.amount);
                 dispatch(decreaseFunds(Number(formData.amount)));
                 setIsSubmitted(true);
             }, 2000);
@@ -87,7 +86,8 @@ export const Send = () => {
                         variant="secondary"
                         size="sm"
                         className="flex items-center justify-center gap-3"
-                        onClick={handleSubmit}
+                            onClick={handleSubmit}
+                            
                     >
                         {isLoading ? (
                             <>
