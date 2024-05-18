@@ -6,8 +6,9 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "P A Y",
-    description: "sharp payment",
+    title: "Khay.Transact",
+    description:
+        "Khay.Transact is a convenient and secure online payment solution. It allows users to send and receive money anywhere, anytime. ",
 };
 
 export default function RootLayout({
