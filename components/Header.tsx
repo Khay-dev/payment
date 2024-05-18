@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Button } from "./Button";
 import { useRouter } from "next/navigation";
-import { resetAmount } from "@/lib/Balance/balanceSlice";
 import { useDispatch } from "react-redux";
 interface HeaderProps {
     currentPage: string;
@@ -15,10 +14,9 @@ export function Header({ currentPage }: HeaderProps): JSX.Element {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        router.push("/login");
         setTimeout(() => {
-            dispatch(resetAmount());
-        }, 500);
+        router.push("/login");
+        }, 1000);
     };
 
     const handleLogin = () => {

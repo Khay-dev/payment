@@ -4,7 +4,8 @@ import { Button } from "./Button";
 import { useDispatch } from "react-redux";
 import { decreaseFunds } from "@/lib/Balance/balanceSlice";
 import { Success } from "./Success";
-
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store";
 interface FormData {
     amount: string;
 }
@@ -13,12 +14,14 @@ export const Send = () => {
     const [formData, setFormData] = useState<FormData>({
         amount: "",
     });
+    const [error, setError] = useState<boolean>(false);
+    const [balanceError, setBalanceError] = useState<boolean>(false);
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const dispatch = useDispatch();
-
+    const balance = useSelector((state: RootState) => state.amount.amount);
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
@@ -28,21 +31,29 @@ export const Send = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-            console.log(formData.amount);
-            dispatch(decreaseFunds(Number(formData.amount)));
-            setIsSubmitted(true);
-        }, 2000);
+        if (
+            Number(formData.amount) <= 0 ||
+            Number(formData.amount) < 100 ||
+            formData.amount === ""
+        ) {
+            setError(true);
+        } else if (Number(formData.amount) > balance) {
+            setBalanceError(true);
+        } else {
+            setIsLoading(true);
+
+            setTimeout(() => {
+                setIsLoading(false);
+                console.log(formData.amount);
+                dispatch(decreaseFunds(Number(formData.amount)));
+                setIsSubmitted(true);
+            }, 2000);
+        }
     };
     return (
         <>
             {isSubmitted ? (
-                <Success
-                    type="transferred"
-                    amount={formData.amount}
-                />
+                <Success type="transferred" amount={formData.amount} />
             ) : (
                 <form className="flex flex-col items-center justify-center gap-y-3 w-full mb-6">
                     <h2 className="text-[#18181B] font-bold text-lg">
@@ -53,11 +64,25 @@ export const Send = () => {
                         id="amount"
                         name="amount"
                         value={formData.amount}
-                        onChange={handleInputChange}
+                        onChange={(e) => {
+                            handleInputChange(e);
+                            setError(false);
+                            setBalanceError(false);
+                        }}
                         placeholder="Enter amount (NGN)"
                         className="p-2 flex h-10 w-[250px] rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground"
                         required
                     />
+                    {error && (
+                        <p className="text-red-500 text-xs text-left  ">
+                            The minimum amount for a transaction is 100.
+                        </p>
+                    )}
+                    {balanceError && (
+                        <p className="text-red-500 text-xs text-left  ">
+                            Insufficient balance for this transaction.
+                        </p>
+                    )}
                     <Button
                         variant="secondary"
                         size="sm"

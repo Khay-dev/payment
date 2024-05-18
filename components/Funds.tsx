@@ -13,7 +13,11 @@ export const Fund = () => {
     const [formData, setFormData] = useState<FormData>({
         amount: "",
     });
+    const [error, setError] = useState<boolean>(false);
+    const [balanceError, setBalanceError] = useState<boolean>(false);
+
     const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const dispatch = useDispatch();
@@ -27,18 +31,26 @@ export const Fund = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-            console.log(formData.amount);
-            setIsSubmitted(true);
-            dispatch(updateFunds(Number(formData.amount)));
-        }, 2000);
+        if (
+            Number(formData.amount) <= 0 ||
+            Number(formData.amount) < 100 ||
+            formData.amount === ""
+        ) {
+            setError(true);
+        } else {
+            setIsLoading(true);
+            setTimeout(() => {
+                setIsLoading(false);
+                console.log(formData.amount);
+                setIsSubmitted(true);
+                dispatch(updateFunds(Number(formData.amount)));
+            }, 2000);
+        }
     };
     return (
         <>
             {isSubmitted ? (
-                <Success type="Funded" amount={formData.amount}/>
+                <Success type="Funded" amount={formData.amount} />
             ) : (
                 <form className="flex flex-col items-center justify-center gap-y-3 w-full mb-6">
                     <h2 className="text-[#18181B] font-bold text-lg">
@@ -54,6 +66,11 @@ export const Fund = () => {
                         className="p-2 flex h-10 w-[250px] rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground"
                         required
                     />
+                    {error && (
+                        <p className="text-red-500 text-xs text-left  ">
+                            The minimum amount for a transaction is 100.
+                        </p>
+                    )}
                     <Button
                         variant="secondary"
                         size="sm"

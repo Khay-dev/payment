@@ -1,18 +1,24 @@
 'use client';
 import {  PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Transaction, fundState } from './types';
 
-export interface fundState {
-  amount: number;
-}
 
-let storedValue = 0;
+let storedValue = 0
+
+let storedTransactions: Transaction[] = [];
 if (typeof window !== "undefined") {
   storedValue = parseInt(localStorage.getItem("amount") || "0", 10);
 }
+ const storedTransactionsString = localStorage.getItem('transactions');
+  if (storedTransactionsString) {
+    storedTransactions = JSON.parse(storedTransactionsString);
+  }
 const initialValue = storedValue;
 
 const initialState: fundState = {
   amount: initialValue,
+    transactions: storedTransactions
+
 };
 
 export const balanceSlice = createSlice({
@@ -21,25 +27,31 @@ export const balanceSlice = createSlice({
   reducers: {
     updateFunds: (state, action: PayloadAction<number>) => {
       state.amount += action.payload;
+      const newTransaction: Transaction = {
+        type: 'Fund',
+        amount: action.payload,
+      };
+      state.transactions.push(newTransaction);
+
       if (typeof window !== "undefined") {
         localStorage.setItem("amount", state.amount.toString());
+         localStorage.setItem('transactions', JSON.stringify(state.transactions));
       }
     },
     decreaseFunds: (state, action: PayloadAction<number>) => {
       state.amount -= action.payload;
+      const newTransaction: Transaction = {
+        type: 'Transfer',
+        amount: action.payload,
+      };
+      state.transactions.push(newTransaction);
       if (typeof window !== "undefined") {
         localStorage.setItem("amount", state.amount.toString());
+         localStorage.setItem('transactions', JSON.stringify(state.transactions));
       }
-    },
-    resetAmount: (state) => {
-      state.amount = 0
-      if (typeof window !== "undefined") {
-        localStorage.setItem("amount", "0");
-      }
-   
-    }    
+    },  
   },
 });
 
-export const { updateFunds, decreaseFunds, resetAmount } = balanceSlice.actions
+export const { updateFunds, decreaseFunds } = balanceSlice.actions
 export default balanceSlice.reducer;
