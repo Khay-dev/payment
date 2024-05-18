@@ -17,7 +17,7 @@ export const Transactions = () => {
                 </div>
 
                 {transaction.length === 0 ? (
-                    <p className="text-xs text-center">No transaction found</p>
+                    <p className="text-xs text-center m-auto pt-5">No transaction found</p>
                 ) : (
                     <div className=" py-4 overflow-x-auto ">
                         <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden ">
