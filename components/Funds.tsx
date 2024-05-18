@@ -61,7 +61,11 @@ export const Fund = () => {
                         id="amount"
                         name="amount"
                         value={formData.amount}
-                        onChange={handleInputChange}
+                        onChange={(e) => {
+                            handleInputChange(e);
+                            setError(false);
+                            setBalanceError(false);
+                        }}
                         placeholder="Enter amount (NGN)"
                         className="p-2 flex h-10 w-[250px] rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground"
                         required
