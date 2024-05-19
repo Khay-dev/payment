@@ -7,8 +7,8 @@ Check out the live demo of Khay.transact [here](https://k-transact.vercel.app/).
 ## Features
 
 - **Send Money:** Users can send money to others by entering the amount they want to send.
-- **Budget Tracking**: Monitor your income and expenses with intuitive budget tracking features.
-- **Expense Management**: Categorize and track your expenses to gain insights into your spending habits.
+- **Budget Tracking**: Monitor your income and expenses.
+
 
 
 ## Technologies Used
