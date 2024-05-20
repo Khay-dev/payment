@@ -6,7 +6,6 @@ import { updateFunds } from "@/application/Balance";
 import { Success } from "../../../components/SuccessModal";
 import { FormData } from "./types";
 
-
 export const Fund = () => {
     const [formData, setFormData] = useState<FormData>({
         amount: "",
@@ -25,23 +24,18 @@ export const Fund = () => {
             [e.target.name]: e.target.value,
         });
     };
-
+    const amount = Number(formData.amount);
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (
-            Number(formData.amount) <= 0 ||
-            Number(formData.amount) < 100 ||
-            formData.amount === ""
-        ) {
-            setError(true);
-        } else {
-            setIsLoading(true);
-            setTimeout(() => {
-                setIsLoading(false);
-                setIsSubmitted(true);
-                dispatch(updateFunds(Number(formData.amount)));
-            }, 2000);
-        }
+
+        amount <= 0 || amount < 100 || formData.amount === ""
+            ? setError(true)
+            : setIsLoading(true)
+              setTimeout(() => {
+                  setIsLoading(false);
+                  setIsSubmitted(true);
+                  dispatch(updateFunds(amount));
+              }, 2000);
     };
     return (
         <>

@@ -23,24 +23,20 @@ const Login = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (formData.username === "" && formData.password === "") {
-            setNameError(true);
-            setPassError(true);
-        } else if (formData.username === "") {
-            setNameError(true);
-        } else if (formData.password === "") {
-            setPassError(true);
-            return;
-        } else {
-            setNameError(false);
-            setPassError(false);
-            setIsLoading(true);
-            setTimeout(() => {
-                setIsLoading(false);
-                dispatch(setName(formData.username));
-                router.push("/dashboard");
-            }, 2000);
-        }
+       formData.username === "" && formData.password === ""
+           ? (setNameError(true), setPassError(true))
+           : formData.username === ""
+           ? setNameError(true)
+           : formData.password === ""
+           ? setPassError(true)
+           : (setNameError(false),
+             setPassError(false),
+             setIsLoading(true),
+             setTimeout(() => {
+                 setIsLoading(false);
+                 dispatch(setName(formData.username));
+                 router.push("/dashboard");
+             }, 2000));
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

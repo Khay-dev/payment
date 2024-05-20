@@ -19,15 +19,12 @@ const Dashboard: React.FC = () => {
 
     const date = new Date();
     const currentHour = date.getHours();
-    let greeting;
-
-    if (currentHour < 12) {
-        greeting = "Good Morning";
-    } else if (currentHour < 18) {
-        greeting = "Good Afternoon";
-    } else {
-        greeting = "Good Evening";
-    }
+    const greeting =
+        currentHour < 12
+            ? "Good Morning"
+            : currentHour < 18
+            ? "Good Afternoon"
+            : "Good Evening";
     return (
         <>
             <Header currentPage="dashboard" />
