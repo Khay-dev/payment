@@ -12,7 +12,7 @@ export function Header({ currentPage }: HeaderProps): JSX.Element {
 
     const handleLogout = () => {
         setTimeout(() => {
-        router.push("/login");
+            router.push("/login");
         }, 1000);
     };
 
@@ -23,7 +23,7 @@ export function Header({ currentPage }: HeaderProps): JSX.Element {
     return (
         <header className="flex items-center justify-between p-[30px] md:p-[35px] ">
             <div className="font-bold text-[20px]">
-                <Link href="/" > K.Transact </Link>
+                <Link href="/"> K.Transact </Link>
             </div>
             <div>
                 {currentPage === "/" && (

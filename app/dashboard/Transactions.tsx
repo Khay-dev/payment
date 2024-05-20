@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
+import { RootState } from "@/application/store";
 
 export const Transactions = () => {
     const transaction = useSelector(

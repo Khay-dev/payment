@@ -1,5 +1,6 @@
 import Image from "next/image";
 import successGif from "@/public/assets/success.gif";
+
 interface successtype {
     type: string;
     amount: string;

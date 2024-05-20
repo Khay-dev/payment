@@ -1,13 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Button } from "./Button";
+import { Button } from "../../../components/ui/Button";
 import { useDispatch } from "react-redux";
-import { updateFunds } from "@/lib/Balance/balanceSlice";
-import { Success } from "./Success";
+import { updateFunds } from "@/application/Balance";
+import { Success } from "../../../components/SuccessModal";
+import { FormData } from "./types";
 
-interface FormData {
-    amount: string;
-}
 
 export const Fund = () => {
     const [formData, setFormData] = useState<FormData>({

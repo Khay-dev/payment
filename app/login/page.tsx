@@ -1,12 +1,11 @@
 "use client";
-import { Button } from "@/components/Button";
-import { Header } from "@/components/Header";
+import { Button } from "@/components/ui/Button";
+import { Header } from "@/components/ui/Header";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setName } from "@/lib/Users/userSlice";
+import { setName } from "@/application/Users";
 import { FormData } from "./type";
-
 
 const Login = () => {
     const [formData, setFormData] = useState<FormData>({

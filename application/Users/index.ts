@@ -1,9 +1,8 @@
 'use client';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { userState } from './types';
 
-export interface userState {
-  username: string;
-}
+
 
 let storedValue = "";
 if (typeof window !== "undefined") {

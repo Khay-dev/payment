@@ -1,14 +1,14 @@
 "use client";
-import { Button } from "@/components/Button";
-import { Fund } from "@/components/Funds";
-import { Header } from "@/components/Header";
-import { Modal } from "@/components/Modal";
-import { Send } from "@/components/Send";
-import { Transactions } from "@/components/Transactions";
+import { Button } from "@/components/ui/Button";
+import { Fund } from "@/app/dashboard/FundModal/FundModal";
+import { Header } from "@/components/ui/Header";
+import { Modal } from "@/components/ui/Modal";
+import { Send } from "@/app/dashboard/SendModal/SendModal";
+import { Transactions } from "@/app/dashboard/Transactions";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
+import { RootState } from "@/application/store";
 
 const Dashboard: React.FC = () => {
     const [isModalfundOpen, setIsModalfundOpen] = useState<boolean>(false);

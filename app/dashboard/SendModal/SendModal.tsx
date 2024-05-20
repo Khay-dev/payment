@@ -1,14 +1,13 @@
 "use client";
 import { useState } from "react";
-import { Button } from "./Button";
+import { Button } from "../../../components/ui/Button";
 import { useDispatch } from "react-redux";
-import { decreaseFunds } from "@/lib/Balance/balanceSlice";
-import { Success } from "./Success";
+import { decreaseFunds } from "@/application/Balance";
+import { Success } from "../../../components/SuccessModal";
 import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
-interface FormData {
-    amount: string;
-}
+import { RootState } from "@/application/store";
+import { FormData } from "./types";
+
 
 export const Send = () => {
     const [formData, setFormData] = useState<FormData>({
@@ -86,8 +85,7 @@ export const Send = () => {
                         variant="secondary"
                         size="sm"
                         className="flex items-center justify-center gap-3"
-                            onClick={handleSubmit}
-                            
+                        onClick={handleSubmit}
                     >
                         {isLoading ? (
                             <>
