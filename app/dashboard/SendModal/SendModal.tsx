@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/application/store";
 import { FormData } from "./types";
 
-
 export const Send = () => {
     const [formData, setFormData] = useState<FormData>({
         amount: "",
@@ -27,26 +26,19 @@ export const Send = () => {
             [e.target.name]: e.target.value,
         });
     };
-
+    const amount = Number(formData.amount);
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (
-            Number(formData.amount) <= 0 ||
-            Number(formData.amount) < 100 ||
-            formData.amount === ""
-        ) {
-            setError(true);
-        } else if (Number(formData.amount) > balance) {
-            setBalanceError(true);
-        } else {
-            setIsLoading(true);
-
-            setTimeout(() => {
-                setIsLoading(false);
-                dispatch(decreaseFunds(Number(formData.amount)));
-                setIsSubmitted(true);
-            }, 2000);
-        }
+        amount <= 0 || amount < 100 || formData.amount === ""
+            ? setError(true)
+            : amount > balance
+            ? setBalanceError(true)
+            : setIsLoading(true) 
+              setTimeout(() => {
+                  setIsLoading(false);
+                  dispatch(decreaseFunds(amount));
+                  setIsSubmitted(true);
+              }, 2000);
     };
     return (
         <>

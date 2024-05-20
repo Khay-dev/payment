@@ -6,7 +6,7 @@ import { userState } from './types';
 
 let storedValue = "";
 if (typeof window !== "undefined") {
-storedValue= localStorage.getItem("username") || "";
+storedValue= localStorage.getItem("username") ?? "";
 
 }
 const initialValue = storedValue;

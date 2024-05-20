@@ -7,11 +7,8 @@ let storedValue = 0
 
 let storedTransactions: Transaction[] = [];
 if (typeof window !== "undefined") {
-  storedValue = parseInt(localStorage.getItem("amount") || "0", 10);
-  const storedTransactionsString = localStorage.getItem('transactions');
-  if (storedTransactionsString) {
-    storedTransactions = JSON.parse(storedTransactionsString);
-  }
+  storedValue = parseInt(localStorage.getItem("amount") ?? "0", 10);
+  storedTransactions = JSON.parse(localStorage.getItem('transactions') ?? '{}');
 }
  
 const initialValue = storedValue;

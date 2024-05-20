@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/ui/Header";
 import Link from "next/link";
+
 export default function Home() {
     return (
         <div className="h-screen bg-top bg-cover bg-bg-hero bg-no-repeat w-full md:bg-center">
