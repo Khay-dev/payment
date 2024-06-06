@@ -5,7 +5,6 @@ export const Transactions = () => {
     const transaction = useSelector(
         (state: RootState) => state.amount.transactions
     );
-    const currentDate = new Date();
 
     return (
         <div className="w-full px-[30px] md:px-[35px]">
@@ -17,7 +16,9 @@ export const Transactions = () => {
                 </div>
 
                 {transaction.length === 0 ? (
-                    <p className="text-xs text-center m-auto pt-5">No transaction found</p>
+                    <p className="text-xs text-center m-auto pt-5">
+                        No transaction found
+                    </p>
                 ) : (
                     <div className=" py-4 overflow-x-auto ">
                         <div className="inline-block min-w-full shadow-md rounded-lg overflow-hidden ">
@@ -54,7 +55,7 @@ export const Transactions = () => {
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm w-1/5 ">
                                                 <p className="text-gray-900 whitespace-nowrap">
-                                                    {currentDate.toLocaleDateString()}
+                                                    {transaction.date}
                                                 </p>
                                             </td>
                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm  w-1/5 ">

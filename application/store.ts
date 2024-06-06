@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSliceReducer from "./Users";
-import fundSliceReducer from "./Balance"
+import balanceSliceReducer from "./Balance"
 export const store = configureStore({
 	reducer: {
 		username: userSliceReducer,
-	   amount:fundSliceReducer
+	   amount:balanceSliceReducer
 	},
 
 });
