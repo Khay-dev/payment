@@ -23,8 +23,10 @@ Check out the live demo of Khay.transact [here](https://k-transact.vercel.app/).
 
 ## Usage
 
-After starting the application, you will be presented with a Home Page then navigate to the login screen and enter your details. 
+After starting the application, you will be presented with a Home Page then navigate to the login screen and enter any details. 
 After logging in, you will be taken to the dashboard, where you can send and receive money and view your transaction history.
+Its basically a test site for practice
+Enjoy❤️
 
 ## Installation
 
